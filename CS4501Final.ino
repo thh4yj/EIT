@@ -129,38 +129,28 @@ void pulseHapticsPWM(int duration, int powerPCT){
   digitalWrite(pin2, LOW);
 }
 
-#define coldPWM 60 //Percentage of power to vibrate at
-#define coldDelay 1000
-#define numPulses 5
+#define coldPWM 50 //Percentage of power to vibrate at
+#define coldDelay 400
+#define numPulses 4
 void pulseCold(void){
   for(int i = 0; i < numPulses; i++){
     pulseHapticsPWM(coldDelay, coldPWM);
     delay(coldDelay);
   }
-//  int pin1 = haptics[0];
-//  int pin2 = haptics[1];
-//
-//  int power = coldPWM/100 *1024;
-//  analogWrite(pin1, power);
-//  analogWrite(pin2, power);
-//  delay(1000); //hold for 1 second
-//  //then disable
-//  digitalWrite(pin1, LOW);
-//  digitalWrite(pin2, LOW);
 }
 
-#define numHotPulses 4
+#define numHotPulses 7
 void pulseHot(void){
   //perform numPulses number of rapid pulses
   for(int i = 0; i < numHotPulses; i++){
-    pulseHaptics(100);
-    delay(100);
+    pulseHaptics(150);
+    delay(50);
   }
 }
 
-#define numNormPulses 2
+#define numNormPulses 1
 #define normalPWM 85
-#define normalDelay 800
+#define normalDelay 1000
 void pulseRight(void){
   for(int i = 0; i < numNormPulses; i++){
     pulseHapticsPWM(normalDelay, normalPWM);
