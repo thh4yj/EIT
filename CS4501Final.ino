@@ -1,4 +1,10 @@
+/*
+ * Team 5 Final project code
+ * Spring 2022
+ * CS 4501
+ */
 #include "haptics.h"
+#include "IR.h"
 #include "Arduino.h"
 
 
@@ -7,25 +13,8 @@ void setup() {
   setPinAsHaptic(11);
   setPinAsHaptic(10);
 
-  pinMode(13, OUTPUT);
-  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(13, HIGH);
-  Serial.println("Cold");
-  pulseCold();
-  digitalWrite(13, LOW);
-  delay(2000);
-    digitalWrite(13, HIGH);
-      Serial.println("Hot");
-  pulseHot();
-    digitalWrite(13, LOW);
-  delay(2000);
-    digitalWrite(13, HIGH);
-      Serial.println("Right");
-  pulseRight();
-  digitalWrite(13, LOW);
-  delay(2000);
+  
 }

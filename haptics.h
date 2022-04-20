@@ -1,3 +1,9 @@
+/*
+ * Author: Tyler Hendricks (thh4yj)
+ * Data: April 2022
+ * Class: CS4501
+ * Team: 5
+ */
 #ifndef HAPTICS_H
 #define HAPTICS_H
 
@@ -57,6 +63,11 @@ void pulseCold(void);
   * @return void
   */
  void pulseRight(void);
+
+ /*
+  * Test function for haptics
+  */
+  void testHaptics(void);
 
 
 

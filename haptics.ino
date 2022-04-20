@@ -72,3 +72,21 @@ void pulseRight(void){
     delay(normalDelay);
   }
 }
+
+void testHaptics(void){
+  digitalWrite(13, HIGH);
+  Serial.println("Cold");
+  pulseCold();
+  digitalWrite(13, LOW);
+  delay(2000);
+  digitalWrite(13, HIGH);
+  Serial.println("Hot");
+  pulseHot();
+  digitalWrite(13, LOW);
+  delay(2000);
+  digitalWrite(13, HIGH);
+  Serial.println("Right");
+  pulseRight();
+  digitalWrite(13, LOW);
+  delay(2000);
+}
