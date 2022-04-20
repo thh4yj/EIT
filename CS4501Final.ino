@@ -12,6 +12,7 @@ void setup() {
   // put your setup code here, to run once:
   setPinAsHaptic(11);
   setPinAsHaptic(10);
+  initIR();
 
 }
 
