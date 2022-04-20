@@ -1,11 +1,13 @@
 #ifndef HAPTICS_H
 #define HAPTICS_H
 
+#include "Arduino.h"
+
+
 /*
  * Array to hold the pin numbers of the two haptic feedback modules used for the project
  */
 int haptics[2];
-int base = 0; //base index of array
 
 /*
  * Set the pin as an output for haptic feedback and add to haptics array.
@@ -13,7 +15,7 @@ int base = 0; //base index of array
  * @param pinNum the pin number to set as an output
  * @return void
  */
-void setPinAsHaptic(int pinNum);
+extern void setPinAsHaptic(int);
 /*
  * Pulse the pin for the given duration.
  * @prereq pinNum must be set as output pin
