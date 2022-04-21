@@ -37,6 +37,7 @@ void loop() {
     float xAvg = xSum / numItems; // calculate the average
     Serial.print(xAvg);
 
+    // If the user shakes the wand, call function to read the temperature data
     if (abs(xAvg) >= 1850) {
       if (activate == 0) {
         activate = 1;
