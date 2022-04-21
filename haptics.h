@@ -65,6 +65,12 @@ void pulseCold(void);
  void pulseRight(void);
 
  /*
+  * Indicate the an error occured when reading the IR sensor
+  * @return void
+  */
+ void pulseError(void);
+
+ /*
   * Test function for haptics
   */
   void testHaptics(void);

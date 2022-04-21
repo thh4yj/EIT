@@ -73,6 +73,10 @@ void pulseRight(void){
   }
 }
 
+void pulseError(void){
+  pulseHaptics(1000); //indicate error with a strong pulse lasting 1 second
+}
+
 void testHaptics(void){
   digitalWrite(13, HIGH);
   Serial.println("Cold");
