@@ -82,33 +82,31 @@ FSMState nextStateFunction(FSMState currentState){
 
 
 void outputStateFunction(FSMState currentState){
-    switch (currentState)
-    {
-    case wait:
+    if(currentState == wait){
         //TODO add code to check IMU and set flag
+        //imuFlag = waitForGesture();
         imuFlag = 1;
         Serial.println("wait");
-        break;
-    case activate:
+    }
+    else if(currentState == activate){
         int data = readTo();
         temperature = handleTo(data);
         Serial.println(temperature);
-        break;
-    case tooCold:
+    }
+    else if(currentState == tooCold){
         Serial.println("Pulse cold");
         pulseCold();
-        break;
-    case tooHot:
+    }
+    else if(currentState == tooHot){
         Serial.println("Pulse hot");
         pulseHot();
-        break;
-    case justRight:
+    }
+    else if(currentState == justRight){
         Serial.println("Pulse right");
         pulseRight();
-        break;
-    case error:
+    }
+    else if(currentState == error){
         Serial.println("Pulse error");
         pulseError();
-        break;
     }
 }

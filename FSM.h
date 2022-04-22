@@ -23,6 +23,7 @@
 
 #include "IR.h"
 #include "haptics.h"
+#include "Force.h"
 
 typedef enum {
   wait,     //0

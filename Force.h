@@ -1,8 +1,3 @@
-/*
- * Team 5 Final project code
- * Spring 2022
- * CS 4501
- */
  /*
   * ===================================================================================
                                       
@@ -17,30 +12,25 @@
 
   * ===================================================================================
   */
-// ********** Includes **********
-#include "haptics.h"
-#include "IR.h"
-#include "FSM.h"
-#include "Arduino.h"
-#include "Force.h"
-//           ********************
+  /*
+   * Author: Thomas Forrester (tsf9nr)
+   * Data: April 2022
+   * Class: CS4501
+   * Team: 5
+   */
+#ifndef FORCE_H
+#define FORCE_H
 
-// ********** Global Variables **********
-  FSMState state = error; //initialize the FSM into a state that will immediatly send it into wait which will begin polling the IMU
+/*
+ * Function to initialize the I2C module and register the slave address
+ * @prereq I2C has already been initialized --done in IR init
+ */
+void forceInit(void);
 
-//                             **********
+/*
+ * Function to wait for gesture. 
+ * @return 1 if gesture was detected, 0 if no gesture or error
+ */
+int waitForGesture(void);
 
-void setup() {
-  // put your setup code here, to run once:
-  setPinAsHaptic(11);
-  setPinAsHaptic(10);
-  initIR();
-  initFSM();
-  Serial.begin(9600);
-}
-
-void loop() {
-  state = nextStateFunction(state);
-  outputStateFunction(state);
-  Serial.println(state);
-}
+#endif
