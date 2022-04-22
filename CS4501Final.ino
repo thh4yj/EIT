@@ -36,6 +36,7 @@ void setup() {
   setPinAsHaptic(10);
   initIR();
   initFSM();
+  forceInit();
   Serial.begin(9600);
 }
 
@@ -43,4 +44,5 @@ void loop() {
   state = nextStateFunction(state);
   outputStateFunction(state);
   Serial.println(state);
+  delay(500);
 }

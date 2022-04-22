@@ -25,6 +25,8 @@ ICM_20948_I2C forceSensor;  // Initialize IMU object (force sensor)
 
 const int numItems = 10;    // number of samples to average
 float accX[numItems];       // Store the samples into an array
+float accY[numItems];       // Store the samples into an array
+float accZ[numItems];       // Store the samples into an array
 int samp_index = 0;         // index to store a sample to the array
 int activateIMU = 0;           // variable to keep track of if we want the device to read the temperature
 
@@ -40,32 +42,18 @@ int waitForGesture(){
     forceSensor.getAGMT();
 
     float ax = forceSensor.accX();
-
-    if (samp_index < numItems - 1)
-      samp_index ++;
-    else
-      samp_index = 0;
-
-    accX[samp_index] = ax;               // add the force sensor reading to the array
-
-    float xSum = 0;
-    for (int i = 0; i < numItems; i++)   // loop through and calculate the sum of the data gathered
-    {
-      xSum += accX[i];
+    float ay = forceSensor.accY();
+    float az = forceSensor.accZ();
+    if(abs(ax) >= 1500 || abs(ay) >= 1500 || abs(az) >= 1500){
+      return 1;
     }
-    float xAvg = xSum / numItems; // calculate the average
-    Serial.print(xAvg);
-
-    // If the user shakes the wand, call function to read the temperature data
-    if (abs(xAvg) >= 1850) {
-      if (activateIMU == 0) {
-        activateIMU = 1;
-        return activateIMU;
-        //call function here
-        activateIMU = 0;
-      }
+    else{
+      Serial.print("x : ");
+      Serial.println(ax);
+      Serial.print("y : ");
+      Serial.println(ay);
+      Serial.print("z : ");
+      Serial.println(az);
+      return 0;
     }
-    delay(10);
-  }
-  return 0;
 }
