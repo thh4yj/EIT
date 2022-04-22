@@ -1,3 +1,23 @@
+ /*
+  * ===================================================================================
+                                      
+                  ______          _            _   _        _____  
+                  |  ___|        | |          | | (_)      |  ___| 
+                  | |_ __ _ _ __ | |_ __ _ ___| |_ _  ___  |___ \  
+                  |  _/ _` | '_ \| __/ _` / __| __| |/ __|     \ \ 
+                  | || (_| | | | | || (_| \__ \ |_| | (__  /\__/ / 
+                  \_| \__,_|_| |_|\__\__,_|___/\__|_|\___| \____/  
+                                                                   
+                                                 
+
+  * ===================================================================================
+  */
+  /*
+   * Author: Tyler Hendricks (thh4yj)
+   * Data: April 2022
+   * Class: CS4501
+   * Team: 5
+   */
 #include "haptics.h"
 #define OUTPUT 1
 #define HIGH 1
@@ -35,7 +55,7 @@ void pulseHapticsPWM(int duration, int powerPCT){
   int pin1 = haptics[0];
   int pin2 = haptics[1];
 
-  int power = powerPCT/100 *1024;
+  int power = powerPCT/100.0 *255.0;
   analogWrite(pin1, power);
   analogWrite(pin2, power);
   delay(duration); //hold for duration microseconds
