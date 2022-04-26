@@ -84,6 +84,7 @@ void pulseCold(void);
   */
  void pulseError(void);
 
+void pulseTemp(void);
  /*
   * Test function for haptics
   */

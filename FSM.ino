@@ -39,6 +39,7 @@ FSMState nextStateFunction(FSMState currentState){
         else{
             nextState = wait;
         }
+        imuFlag = 0;
     }
     else if(currentState ==  activate){
         Serial.println("Act state");
@@ -84,11 +85,12 @@ FSMState nextStateFunction(FSMState currentState){
 void outputStateFunction(FSMState currentState){
     if(currentState == wait){
         //TODO add code to check IMU and set flag
-        //imuFlag = waitForGesture();
-        imuFlag = 1;
+        imuFlag = waitForGesture();
+        //imuFlag = 1;
         Serial.println("wait");
     }
     else if(currentState == activate){
+        pulseTemp();
         int data = readTo();
         temperature = handleTo(data);
         Serial.println(temperature);
