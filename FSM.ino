@@ -21,7 +21,7 @@
 #include "FSM.h"
 
 void initFSM(){
-    
+    pinMode(13, OUTPUT);
 }
 
 #define minTemp 100
@@ -43,7 +43,10 @@ FSMState nextStateFunction(FSMState currentState){
     }
     else if(currentState ==  activate){
         Serial.println("Act state");
-        if(temperature < minTemp){
+        if(temperature < 0){ //i2c error occured
+          nextState = wait;
+        }
+        else if(temperature < minTemp){
             nextState = tooCold;
         }
         else if(temperature <= maxTemp && temperature >= minTemp){
@@ -85,15 +88,19 @@ FSMState nextStateFunction(FSMState currentState){
 void outputStateFunction(FSMState currentState){
     if(currentState == wait){
         //TODO add code to check IMU and set flag
+        digitalWrite(13, LOW);
         imuFlag = waitForGesture();
         //imuFlag = 1;
         Serial.println("wait");
     }
     else if(currentState == activate){
-        pulseTemp();
+        digitalWrite(13, HIGH);
+        //pulseTemp();
         int data = readTo();
         temperature = handleTo(data);
+        //delay(1000);
         Serial.println(temperature);
+        
     }
     else if(currentState == tooCold){
         Serial.println("Pulse cold");

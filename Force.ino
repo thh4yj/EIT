@@ -40,21 +40,27 @@ int waitForGesture(){
   // get the data from the IMU
   if (forceSensor.dataReady()) {
     forceSensor.getAGMT();
+         
 
     float ax = forceSensor.accX();
     float ay = forceSensor.accY();
     float az = forceSensor.accZ();
-    if(abs(ax) >= 1500 || abs(ay) >= 1500 || abs(az) >= 1500){
-      return 1;
-    }
-    else{
-      Serial.print("x : ");
+     Serial.print("x : ");
       Serial.println(ax);
       Serial.print("y : ");
       Serial.println(ay);
       Serial.print("z : ");
       Serial.println(az);
+    if(abs(ax) >= 1200 || abs(ay) >= 1200 || abs(az) >= 1800){
+   // if(abs(az) >= 1800){
+      return 1;
+    }
+    else{
+
       return 0;
     }
-}
+  }
+  else{
+    Serial.println("No data on IMU");
+  }
 }
